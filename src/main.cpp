@@ -3355,6 +3355,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                 addr.nTime = nNow - 5 * 24 * 60 * 60;
             pfrom->AddAddressKnown(addr);
             bool fReachable = IsReachable(addr);
+/*
             if (addr.nTime > nSince && !pfrom->fGetAddr && vAddr.size() <= 10 && addr.IsRoutable())
             {
                 // Relay to a limited number of other nodes
@@ -3384,6 +3385,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
                         ((*mi).second)->PushAddress(addr);
                 }
             }
+*/
             // Do not store addresses outside our network
             if (fReachable)
                 vAddrOk.push_back(addr);
@@ -3950,6 +3952,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
         }
 
         // Address refresh broadcast
+/*
         static int64 nLastRebroadcast;
         if (!IsInitialBlockDownload() && (GetTime() - nLastRebroadcast > 24 * 60 * 60))
         {
@@ -3972,7 +3975,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
             }
             nLastRebroadcast = GetTime();
         }
-
+*/
         //
         // Message: addr
         //
